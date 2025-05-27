@@ -1,24 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset='UTF-8'>
-<title>MSDS Chemical Index - Rhodes University</title>
-<style>
-  body { font-family: Arial, sans-serif; background-color: #f3f0f8; color: #2e003e; margin: 40px; }
-  h1 { color: #5e239d; }
-  h2 { color: #702d9c; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
-  a { color: #5e239d; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  ul { list-style-type: none; padding-left: 0; }
-  li { margin-bottom: 8px; }
-  .header { margin-bottom: 40px; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pharmaceutics MSDS Index</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f0fb;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #5e3b97;
+      text-align: center;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin: 20px 0;
+      border: 2px solid #5e3b97;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #d1c3ee;
+      color: #333;
+    }
+    tr:hover {
+      background-color: #f1ebfb;
+    }
+  </style>
 </head>
 <body>
-<div class='header'>
-<h1>Rhodes University, Faculty of Pharmacy<br>Pharmaceutics Division - MSDS Chemical Index</h1>
-<p>This index provides quick access to chemical safety data sheets used in the Pharmaceutics Division laboratory.</p>
-</div>
-<ul>
-</ul><hr>
-</body></html>
+  <h1>Material Safety Data Sheets (MSDS) - Pharmaceutics</h1>
+
+  <input type="text" id="searchBox" placeholder="Search for a chemical...">
+
+  <table id="msdsTable">
+    <thead>
+      <tr>
+        <th>Chemical Name</th>
+        <th>CAS Number</th>
+        <th>Product Code</th>
+        <th>Brand</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bentonite</td>
+        <td>1302-78-9</td>
+        <td>285234</td>
+        <td>SIGALD</td>
+      </tr>
+      <tr>
+        <td>Beeswax</td>
+        <td>8012-89-3</td>
+        <td>243248</td>
+        <td>Aldrich</td>
+      </tr>
+      <tr>
+        <td>Ascorbic Acid</td>
+        <td>50-81-7</td>
+        <td>PHR1008</td>
+        <td>Sigma-Aldrich</td>
+      </tr>
+      <tr>
+        <td>Peanut Oil</td>
+        <td>8002-03-7</td>
+        <td>P2144</td>
+        <td>Sigma</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    const searchBox = document.getElementById("searchBox");
+    const table = document.getElementById("msdsTable").getElementsByTagName("tbody")[0];
+
+    searchBox.addEventListener("keyup", function () {
+      const query = this.value.toLowerCase();
+      const rows = table.getElementsByTagName("tr");
+      for (let row of rows) {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(query) ? "" : "none";
+      }
+    });
+  </script>
+</body>
+</html>
